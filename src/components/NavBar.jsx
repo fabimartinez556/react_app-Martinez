@@ -1,9 +1,13 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { CartWidget } from "./CartWidget.jsx";
+import Cart from "./Cart";
+import { CartWidget } from "./CartWidget";
+
 import "./NavBar.css";
 
 export const NavBar = () => {
   const categories = ["electronica", "ropa", "calzado", "accesorios"];
+  const [showCart, setShowCart] = useState(false); // <--- estado para mostrar carrito
 
   return (
     <nav>
@@ -24,7 +28,14 @@ export const NavBar = () => {
           <NavLink to="/contact">Contact</NavLink>
         </li>
       </ul>
-      <CartWidget />
+
+      {/* abrimos el carrito */}
+      <div onClick={() => setShowCart(true)} style={{ cursor: "pointer" }}>
+        <CartWidget />
+      </div>
+
+      {/* Mostrar el carrito si es true */}
+      {showCart && <Cart onClose={() => setShowCart(false)} />}
     </nav>
   );
 };

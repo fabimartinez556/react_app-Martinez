@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { CartContext } from "../context/CartContext"; // asegurate de la ruta
+import { CartContext } from "../context/CartContext";
 
 const ItemCount = ({ stock, initial, product }) => {
   const [count, setCount] = useState(initial);
@@ -13,17 +13,16 @@ const ItemCount = ({ stock, initial, product }) => {
     if (count > 1) setCount(count - 1);
   };
 
-  const handleAdd = () => {
+  const handleAddToCart = () => {
     addToCart(product, count);
-    setCount(initial); // opcional: resetear contador a inicial
   };
 
   return (
-    <div>
+    <div className="item-count">
       <button onClick={decrement}>-</button>
       <span style={{ margin: "0 1rem" }}>{count}</span>
       <button onClick={increment}>+</button>
-      <button style={{ marginLeft: "1rem" }} onClick={handleAdd}>
+      <button style={{ marginLeft: "1rem" }} onClick={handleAddToCart}>
         Agregar al carrito
       </button>
     </div>
