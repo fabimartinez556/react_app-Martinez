@@ -36,6 +36,24 @@ export const products = [
     image: "/img/zapatillas.jpg",
     description: "Zapatillas ligeras y cómodas para correr todos los días.",
   },
+  {
+    id: 5,
+    title: "Mochila deportiva",
+    category: "accesorios",
+    price: 50,
+    stock: 12,
+    image: "/img/mochila.jpg",
+    description: "Mochila ligera y resistente para deportes y viajes.",
+  },
+  {
+    id: 6,
+    title: "Smartwatch",
+    category: "electronica",
+    price: 200,
+    stock: 8,
+    image: "/img/smartwatch.jpg",
+    description: "Reloj inteligente con monitoreo de actividad y notificaciones.",
+  }
 ];
 
 export const getProducts = () => {

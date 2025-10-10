@@ -20,7 +20,6 @@ export const ItemListContainer = ({ saludo }) => {
   return (
     <div className="item-list-container">
       <h1>{saludo}</h1>
-      <p>Catálogo de productos:</p>
       <div className="products-grid">
         {products.map((p) => (
           <div key={p.id} className="product-card">

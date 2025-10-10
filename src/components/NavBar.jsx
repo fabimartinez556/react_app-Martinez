@@ -1,27 +1,30 @@
-import "./NavBar.css";
+import { NavLink } from "react-router-dom";
 import { CartWidget } from "./CartWidget.jsx";
-import { Link } from "react-router-dom";
+import "./NavBar.css";
 
-export const NavBar = () => (
-  <nav>
-    <img
-      src="https://www.taisa-designer.com/wp-content/uploads/2019/09/anton-darius-thesollers-xYIuqpHD2oQ-unsplash.jpg"
-      alt="Logo"
-    />
-    <ul>
-      <li>
-        <Link to="/">Home</Link>
-      </li>
-      <li>
-        <Link to="/category/electronica">Electrónica</Link>
-      </li>
-      <li>
-        <Link to="/category/ropa">Ropa</Link>
-      </li>
-      <li>
-        <Link to="/category/calzado">Calzado</Link>
-      </li>
-    </ul>
-    <CartWidget />
-  </nav>
-);
+export const NavBar = () => {
+  const categories = ["electronica", "ropa", "calzado", "accesorios"];
+
+  return (
+    <nav>
+      <img
+        src="https://www.taisa-designer.com/wp-content/uploads/2019/09/anton-darius-thesollers-xYIuqpHD2oQ-unsplash.jpg"
+        alt="Logo"
+      />
+      <ul>
+        <li>
+          <NavLink to="/">Home</NavLink>
+        </li>
+        {categories.map((cat) => (
+          <li key={cat}>
+            <NavLink to={`/category/${cat}`}>{cat}</NavLink>
+          </li>
+        ))}
+        <li>
+          <NavLink to="/contact">Contact</NavLink>
+        </li>
+      </ul>
+      <CartWidget />
+    </nav>
+  );
+};
