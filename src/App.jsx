@@ -21,7 +21,7 @@ function App() {
     </BrowserRouter>
   );
 }
-function App()
+function App() {
   return (
     <CartProvider>
       <BrowserRouter>
@@ -35,5 +35,5 @@ function App()
       </BrowserRouter>
     </CartProvider>
   );
-
+}
 export default App;
