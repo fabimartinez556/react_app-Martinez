@@ -5,7 +5,6 @@ import "./Cart.css";
 const Cart = ({ onClose }) => {
   const { cart, removeItem, clearCart } = useContext(CartContext);
 
-  // calcular total del carrito
   const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
   return (
