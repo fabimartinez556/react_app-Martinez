@@ -1,13 +1,9 @@
-import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import Cart from "./Cart";
-import { CartWidget } from "./CartWidget";
-
+import { CartWidget } from "./CartWidget.jsx"; // 🔹 Import con llaves
 import "./NavBar.css";
 
 export const NavBar = () => {
   const categories = ["electronica", "ropa", "calzado", "accesorios"];
-  const [showCart, setShowCart] = useState(false); // <--- estado para mostrar carrito
 
   return (
     <nav>
@@ -17,25 +13,33 @@ export const NavBar = () => {
       />
       <ul>
         <li>
-          <NavLink to="/">Home</NavLink>
+          <NavLink to="/" className={({ isActive }) => (isActive ? "active" : "")}>
+            Home
+          </NavLink>
         </li>
         {categories.map((cat) => (
           <li key={cat}>
-            <NavLink to={`/category/${cat}`}>{cat}</NavLink>
+            <NavLink
+              to={`/category/${cat}`}
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
+              {cat.charAt(0).toUpperCase() + cat.slice(1)}
+            </NavLink>
           </li>
         ))}
         <li>
-          <NavLink to="/contact">Contact</NavLink>
+          <NavLink
+            to="/cart"
+            className={({ isActive }) => (isActive ? "active" : "")}
+          >
+            Carrito
+          </NavLink>
         </li>
       </ul>
 
-      {/* abrimos el carrito */}
-      <div onClick={() => setShowCart(true)} style={{ cursor: "pointer" }}>
+      <div style={{ cursor: "pointer" }}>
         <CartWidget />
       </div>
-
-      {/* Mostrar el carrito si es true */}
-      {showCart && <Cart onClose={() => setShowCart(false)} />}
     </nav>
   );
 };

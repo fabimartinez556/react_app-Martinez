@@ -1,20 +1,18 @@
-import { useContext, useState } from "react";
-import { CartContext } from "../context/CartContext";
-import Cart from "./Cart";
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext.jsx";
+import { Link } from "react-router-dom";
 import "./CartWidget.css";
 
 export const CartWidget = () => {
-  const { cart } = useContext(CartContext);
-  const [showCart, setShowCart] = useState(false);
+  const { getTotalItems } = useContext(CartContext);
 
-  const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
+  const totalItems = getTotalItems();
 
   return (
     <div className="cart-widget-container">
-      <div className="cart-widget" onClick={() => setShowCart(true)}>
-        🛒 <span>{totalItems}</span>
-      </div>
-      {showCart && <Cart onClose={() => setShowCart(false)} />}
+      <Link to="/cart" className="cart-widget-link">
+        🛒 <span className="cart-count">{totalItems}</span>
+      </Link>
     </div>
   );
 };
